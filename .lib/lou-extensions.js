@@ -38,26 +38,23 @@ function loadExtensions(info) {
 			console.log('[lou-extensions] - register ' + info.resources[i].name);
 			
 			// grab contents of resource-file.
-			var ResourceContent = GM_getResourceText(info.resources[i].name);
-		//	console.info(ResourceContent);
+			var resourceContent = GM_getResourceText(info.resources[i].name);
+
 			// grab part after the last dot.
-			var ResourceFilext = /\w+$/g.exec(info.resources[i].src)[0];
-		//	console.info(ResourceFilext);
-			
-		//	debugger;
-			
+			var resourceFileExt = /\w+$/g.exec(info.resources[i].src)[0];
+
 			try {
-				switch( ResourceFilext ){
+				switch( resourceFileExt ){
 				case "js":
-					injectScript(ResourceContent, "text/javascript", info.resources[i].name);
+					injectScript(resourceContent, "text/javascript", info.resources[i].name);
 					break;
 				case "css":
-					injectStyle(ResourceContent, "text/css", info.resources[i].name);
+					injectStyle(resourceContent, "text/css", info.resources[i].name);
 					break;
 				default:
 					console.log("Don't know how to inject a resource with this file extension."
 						 + "\n\tResource name: " + info.resources[i].name
-						 + "\n\tResource extension: " + ResourceFilext
+						 + "\n\tResource extension: " + resourceFileExt
 					);
 				}
 			} catch (e) {
@@ -75,7 +72,7 @@ function getScriptMetaData() {
 	
 	//built-in meta data
 	var info = GM_info;
-	
+
 	//add resources from meta data
 	if (!("resources" in info)) {
 		info.resources = [];
@@ -91,6 +88,6 @@ function getScriptMetaData() {
 			}
 		}
 	}
-//	console.info(info);
+
 	return info;
 }
