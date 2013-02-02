@@ -6,7 +6,7 @@
 // @downloadURL https://userscripts.org/scripts/source/138566.user.js
 // @updateURL   https://bit.ly/PPzl0Y
 // @version     0.6.3
-// @run-at      document_end
+// @run-at      document-end
 // @grant       GM_getResourceText
 // @grant       GM_info
 // @resource    compat/compat.qooxdoo.js                     http://conanloxley.github.com/lou-extensions/release/compat/compat.qooxdoo.js
